@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#vars
+#EXTS="/tmp/ext_list.txt"
+EXTS="/usr/scripts/ext_list.txt"
+
+#asterisk -rx "sip show peers" | grep "OK" | awk '{print $1,$2}' | sed 's/.*\///' | grep -v "BSZ_MXONE 10.115.31.10" > /tmp/ext_list.txt
+
+get_ext()
+	{
+	cat $EXTS
+	}
+	
+#get_ext | while read EXT IP; do
+get_ext | while read EXT IP UA; do
+#UA=`asterisk -rx "sip show peer $EXT" | grep "Useragent" | awk '{print $3,$4,$5}'`
+MAC=`nmap -sP $IP | grep MAC | awk '{print $3}'`
+echo "$EXT $MAC $IP $UA"
+
+done
