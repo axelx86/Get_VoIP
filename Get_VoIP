@@ -4,7 +4,7 @@
 #EXTS="/tmp/ext_list.txt"
 EXTS="/usr/scripts/ext_list.txt"
 
-#asterisk -rx "sip show peers" | grep "OK" | awk '{print $1,$2}' | sed 's/.*\///' | grep -v "BSZ_MXONE 10.115.31.10" > /tmp/ext_list.txt
+#asterisk -rx "sip show peers" | grep "OK" | awk '{print $1,$2}' | sed 's/.*\///' > /tmp/ext_list.txt
 
 get_ext()
 	{
